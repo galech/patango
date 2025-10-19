@@ -1,0 +1,90 @@
+
+node{
+	font-family: monospace;
+	margin-bottom: 5px;
+    margin-top: 5px;
+
+}
+
+input{
+
+  line-height: 21px;
+}
+
+.node{
+    display: inline-block;
+    border-left: 1px solid black;
+    margin-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.ui-select-container {
+	display: inline-block;
+}
+
+.root-node{
+	border-bottom: 2px solid black;
+	margin-bottom: 15px;
+	padding-bottom: 15px;
+}
+
+select.ng-invalid {
+	background: linear-gradient(45deg, #ffe5e5, #ffffff);
+  	box-shadow: 0 0 3px red;
+}
+
+.add-node{
+	vertical-align: top;
+}
+
+/*node{*/
+/*	display: contents;*/
+/*}*/
+operator{
+	position: relative;
+}
+
+operator .dropdown-menu.text-center{
+	text-align:center;
+}
+
+operator .dropdown-toggle{
+
+}
+
+operator .dropdown-menu button{
+	margin: 2px;
+}
+
+condition .multi-choices{
+	max-width: 500px;
+}
+
+.childs{
+	padding-left: 15px;
+}
+
+.child{
+	padding: 10px;
+}
+
+subquery{
+	padding-right: 15px;
+	display: block;
+}
+
+.ui-select-container.ng-invalid{
+		border: 2px solid red;
+}
+input.ng-invalid{
+	border-color: red;
+    background-color: #f8d7da;
+}
+
+.input-group condition .form-control{
+
+	float: none;
+	display: inline-block;
+
+}

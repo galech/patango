@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<div style="height: 100%; line-height: 28px; margin-top:50px">
+	<div  ng-form="$ctrl.queryForm"  class="form-horizontal col-sm-12">
+
+    <div class="form-group col-sm-12">
+        <label class="col-sm-2 col-form-label text-right">Model:</label>
+        <div class="col-sm-10" style="display: flex; align-items: center; gap: 5px">
+            <ui-select append-to-body="true" theme="bootstrap" on-select="$ctrl.newQuery($item);" ng-model="selectedQuery">
+              <ui-select-match placeholder="{{::'New query' | translate}}">{{$select.selected.label}}</ui-select-match>
+              <ui-select-choices group-by="'group'" repeat="query in $ctrl.availableQueries | orderBy: ['label'] |  filter: {label: $select.search}">
+                <span ng-bind-html="query.label"></span>
+              </ui-select-choices>
+            </ui-select>
+            <button class="btn btn-secondary btn-sm" ng-click="$ctrl.importQuery($ctrl.jsonText)">Import Json</button>
+        </div>
+      </div>
+
+      <div ng-if="$ctrl.query.filters" class="form-group col-sm-12">
+        <label class="col-sm-2 col-form-label text-right">Annotations:</label>
+        <annotations class="col-sm-10" annotations="$ctrl.query.annotations" available-queries="$ctrl.availableQueries" model="$ctrl.model"></annotations>
+      </div>
+
+      <div ng-if="$ctrl.query.filters" class="form-group col-sm-12">
+          <label class="col-sm-2 col-form-label text-right">Filters:</label>
+          <filters class="col-sm-10" filters="$ctrl.query.filters" model="$ctrl.model" annotations="$ctrl.query.annotations"></filters>
+      </div>
+
+      <div ng-if="$ctrl.query.filters" class="form-group col-sm-12">
+          <label class="col-sm-2 col-form-label text-right">Values:</label>
+          <values class="col-sm-10" annotations="$ctrl.query.annotations" values="$ctrl.query.values" model="$ctrl.model"></values>
+      </div>
+
+      <div ng-if="$ctrl.query.filters" class="form-group col-sm-12">
+        <label class="col-sm-2 col-form-label text-right">Preview:</label>
+        <div class="col-sm-10"><pre>{{ $ctrl.query | json }}</pre></div>
+      </div>
+
+      <div ng-if="$ctrl.query.filters" class="form-group col-sm-12">
+        <div class="col-sm-10 col-sm-offset-2">
+          <button ng-disabled="$ctrl.queryForm.$invalid" ng-click="$ctrl.getQuery('html')" class="btn btn-success">Run</button>
+          <button ng-disabled="$ctrl.queryForm.$invalid" ng-click="$ctrl.getQuery('csv')" class="btn btn-info">Csv</button>
+        </div>
+      </div>
+
+      <div ng-if="$ctrl.result" class="form-group col-sm-12">
+        <div class="col-sm-10 col-sm-offset-2" ng-bind-html="$ctrl.result" style="overflow-x:scroll"></div>
+      </div>
+
+	</div>
+
+
+</div>

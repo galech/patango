@@ -1,0 +1,17 @@
+
+<span ng-repeat="(key, value)  in $ctrl.filters" style="display: flex; flex-direction: row; gap: 10px; align-items: center; margin-bottom: 10px">
+    {{ key }} :
+    <filters ng-if="key === '__or' || key === '__not'" filters="value" model="$ctrl.model" annotations="$ctrl.annotations"></filters>
+    <new-condition ng-if="key !== '__not' && key !== '__or'" filters="$ctrl.filters" path="key" model="$ctrl.model" annotations="$ctrl.annotations"></new-condition>
+</span>
+
+<span ng-repeat="virtualValue in $ctrl.virtualFilters" style="display: flex; flex-direction: row; gap: 10px; align-items: center; margin-bottom: 10px">
+    {{ virtualValue.path }}
+    <select class="form-control" ng-change="$ctrl.expandVirtualValue(_, virtualValue); _=null" ng-model="_" ng-options="f as f.label group by f.db_type for f in virtualValue.options">
+      <option value="" disabled selected hidden>{{::'Add value' | translate}}</option>
+    </select>
+</span>
+
+<select class="form-control" ng-change="$ctrl.expandVirtualValue(_); _=null" ng-model="_" ng-options="f as f.label group by f.db_type for f in $ctrl.options">
+  <option value="" disabled selected hidden>{{::'Add filter' | translate}}</option>
+</select>

@@ -1,0 +1,13 @@
+django_patango/__pycache__/
+*/django_patango.egg-info/
+frontend/node_modules/
+venv/
+*.Zone.Identifier
+otras
+__pycache__/
+*.pyc
+*.pyo
+
+.idea/
+*/db.sqlite3
+dist/

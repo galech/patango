@@ -1,0 +1,26 @@
+{% load static %}
+<html ng-app="djangoPatango">
+<head>
+
+    <script src="{% static 'django_patango/jquery.min.js' %}"></script>
+    <script src="{% static 'django_patango/bootstrap.min.js' %}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.2/select2.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'django_patango/vendor.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <script src="{% static 'django_patango/lodash.js' %}"></script>
+    <script src="{% static 'django_patango/angular.js' %}"></script>
+    <script src="{% static 'django_patango/angular-sanitize.js' %}"></script>
+    <script src="{% static 'django_patango/select.js' %}"></script>
+    <script src="{% static 'django_patango/angular-route.js' %}"></script>
+    <script src="{% static 'django_patango/angular-translate.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-drag-and-drop-lists/2.1.0/angular-drag-and-drop-lists.min.js"></script>
+
+    <script src="{% static 'django_patango/templates.js' %}"></script>
+    <script src="{% static 'django_patango/angular-app.js' %}"></script>
+</head>
+<body>
+	<query-builder introspection-url="{{ introspection_url }}" post-url="{{post_url}}"></query-builder>
+</body>
+</html>

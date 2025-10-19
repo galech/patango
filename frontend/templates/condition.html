@@ -1,0 +1,24 @@
+<span ng-if="$ctrl.inputType">
+	<span ng-if="$ctrl.key.endsWith('range')">
+		[<input ng-attr-type="{{$ctrl.inputType}}" required ng-model="$ctrl.filters[$ctrl.path][0]">
+		 <input ng-attr-type="{{$ctrl.inputType}}" required ng-model="$ctrl.filters[$ctrl.path][1]">]
+	</span>
+	<input ng-if="!$ctrl.key.endsWith('range')" ng-attr-type="{{$ctrl.inputType}}"  ng-required="$ctrl.inputType !== 'checkbox'" ng-model="$ctrl.filters[$ctrl.path]">
+</span>
+
+<span ng-if="$ctrl.dateInput">
+	<span ng-if="$ctrl.key.endsWith('range')">
+		[<input-date-only model="$ctrl.filters[$ctrl.path][0]"  required="true"></input-date-only>
+		 <input-date-only model="$ctrl.filters[$ctrl.path][1]"  required="true"></input-date-only>]
+	</span>
+	<input-date-only ng-if="!$ctrl.key.endsWith('range')" model="$ctrl.filters[$ctrl.path]" required="true"></input-date-only>
+</span>
+
+<span ng-if="$ctrl.choices">
+	<ui-select class="multi-choices" ng-if="::$ctrl.choices.length > 0" ng-required="true" multiple theme="bootstrap" ng-model="$ctrl.filters[$ctrl.path]">
+		<ui-select-match placeholder="{{::'Select condition' | translate}}">{{$item.label}}</ui-select-match>
+		<ui-select-choices repeat="c.value as c in $ctrl.choices | filter: {'label':$select.search}">
+			<span ng-bind-html="c.label"></span>
+		</ui-select-choices>
+	</ui-select>
+</span>
